@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
 import { connect } from './db'
+import vendorRouter from './routes/vendor'
 
 dotenv.config()
 
@@ -13,6 +14,8 @@ connect()
 app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
+
+app.use('/vendors', vendorRouter)
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`)
