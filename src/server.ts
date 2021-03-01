@@ -4,6 +4,9 @@ import cors from 'cors'
 import morgan from 'morgan'
 import { connect } from './db'
 import vendorRouter from './routes/vendor'
+import cityRouter from './routes/city'
+import countryRouter from './routes/country'
+import departamentRouter from './routes/departament'
 
 dotenv.config()
 
@@ -16,6 +19,9 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 app.use('/vendors', vendorRouter)
+app.use('/cities', cityRouter)
+app.use('/countries', countryRouter)
+app.use('/departaments', departamentRouter)
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`)
