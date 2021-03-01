@@ -4,4 +4,5 @@ export interface ILocation extends Document {
   name: string
 }
 
-export const locationRegexp = /^[A-záéíóúÁÉÍÓÚñÑ]{2,}$/g
+// Regexp only letters and multiple words
+export const locationRegexp = /^[A-záéíóúÁÉÍÓÚñÑ\s]{2,}$/g
