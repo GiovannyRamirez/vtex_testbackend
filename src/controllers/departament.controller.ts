@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
 import { ILocation } from '../interfaces/location'
-import Country from '../models/country.model'
+import Departament from '../models/departament.model'
 
-export async function newCountry(req: Request, res: Response): Promise<void> {
+export async function newDepartament(req: Request, res: Response): Promise<void> {
   try {
     const { name } = req.body
-    const country:ILocation = await Country.create({ name })
-    res.status(200).json({ country })
+    const departament:ILocation = await Departament.create({ name })
+    res.status(200).json({ departament })
   } catch (err) {
     res.status(400).json({ message: `Ups ${err.message}` })
   }
@@ -14,8 +14,8 @@ export async function newCountry(req: Request, res: Response): Promise<void> {
 
 export async function list(req: Request, res: Response): Promise<void> {
   try {
-    const countries:ILocation[] = await Country.find()
-    res.status(200).json({ countries })
+    const departaments:ILocation[] = await Departament.find()
+    res.status(200).json({ departaments })
   } catch (err) {
     res.status(400).json({ message: `Ups ${err.message}` })
   }
