@@ -6,7 +6,8 @@ export interface IVendor extends Document {
   phone: string
 }
 
-const emailRegexp  = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+const emailRegexp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+const phoneRegexp = /^[0-9]{7,10}$/g
 
 const vendorSchema = new Schema({
   name: {
@@ -31,9 +32,8 @@ const vendorSchema = new Schema({
   },
   phone: {
     type: String,
-    default: 'No Number',
-    minLength: 7,
-    maxLength: 10,
+    default: '0000000',
+    match: [phoneRegexp, 'Invalid phone number, it must have between 7 and 10 digits']
   }
 }, {
   timestamps: true,
